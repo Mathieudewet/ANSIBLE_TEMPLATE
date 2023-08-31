@@ -1,0 +1,49 @@
+
+---
+all:
+  children:
+    app1:
+      hosts:
+        app1_server_1_dev:
+        app1_server_2_dev:
+        app1_server_3_dev:
+        app1_server_4_dev:
+        app1_server_5_dev:
+        app1_server_6_dev:
+    app2:
+      hosts:
+        app2_server_1_dev:
+        app2_server_2_dev:
+        app2_server_3_dev:
+        app2_server_4_dev:
+        app2_server_5_dev:
+        app2_server_6_dev:
+    databases:
+      hosts:
+        db_server_1_dev:
+        db_server_2_dev:
+      vars:
+        mariadb_install: true
+    monitoring:
+      hosts:
+        monitoring_server_dev:
+    frontend:
+      hosts:
+        frontend_server_1_dev:
+        frontend_server_2_dev:
+      vars:
+        react_install: true
+    backend:
+      hosts:
+        backend_server_1_dev:
+        backend_server_2_dev:
+      vars:
+        nestjs_install: true
+    load_balancer:
+      hosts:
+        lb_server_dev:
+      vars:
+        nginx_install: true
+        ssl_enable: true
+        http_to_https_redirect: true
+        

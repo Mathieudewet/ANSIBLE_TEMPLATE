@@ -1,0 +1,62 @@
+
+---
+- hosts: databases
+  roles:
+    - role: mariadb
+  vars_files:
+    - "roles/mariadb/vars/main.yml"
+
+- hosts: load_balancer
+  roles:
+    - role: nginx
+  vars_files:
+    - "roles/nginx/vars/main.yml"
+
+- hosts: frontend
+  roles:
+    - role: react
+  vars_files:
+    - "roles/react/vars/main.yml"
+
+- hosts: backend
+  roles:
+    - role: nestjs
+  vars_files:
+    - "roles/nestjs/vars/main.yml"
+    
+
+# Additional Notes and TODOs for Further Study
+
+## Variable Scope and Precedence
+# TODO: Experiment with different variable scopes and understand their precedence.
+
+## Conditionals and Loops
+# TODO: Add conditional statements and loops to make the playbook more dynamic.
+# Example: Use 'when' to conditionally execute tasks based on environment variables.
+
+## Templates and Jinja2
+# TODO: Use Ansible templates to generate configuration files dynamically.
+# Example: Create a Jinja2 template for the NGINX configuration file.
+
+## Roles and Include
+# TODO: Deep dive into roles and learn how to include tasks, handlers, or other playbooks.
+
+## Error Handling
+# TODO: Implement error handling and edge cases in your playbook.
+# Example: Use 'ignore_errors' and 'failed_when' to customize error handling.
+
+## Ansible Vault
+# TODO: Secure sensitive information using Ansible Vault.
+
+## Dynamic Inventory
+# TODO: Configure dynamic inventory to fetch host information dynamically.
+
+## Testing
+# TODO: Use testing tools like Molecule or Ansible Lint to validate your playbook.
+
+## CI/CD Integration
+# TODO: Integrate Ansible into a CI/CD pipeline for automated deployments.
+
+## Community Resources
+# NOTE: Ansible has a rich ecosystem. Explore community roles, playbooks, and best practices.
+    

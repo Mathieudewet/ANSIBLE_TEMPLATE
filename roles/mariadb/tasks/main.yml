@@ -1,0 +1,8 @@
+
+---
+- name: Install mariadb
+  command: echo "Installing mariadb"
+  
+- name: Configure mariadb
+  command: echo "Configuring mariadb"
+        

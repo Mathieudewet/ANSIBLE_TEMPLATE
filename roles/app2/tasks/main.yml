@@ -1,0 +1,5 @@
+
+---
+- name: Update app2
+  command: /usr/bin/update-app2
+    

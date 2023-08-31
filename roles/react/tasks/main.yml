@@ -1,0 +1,8 @@
+
+---
+- name: Install react
+  command: echo "Installing react"
+  
+- name: Configure react
+  command: echo "Configuring react"
+        

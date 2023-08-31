@@ -1,0 +1,5 @@
+
+---
+- name: Update database
+  command: /usr/bin/update-database
+    
