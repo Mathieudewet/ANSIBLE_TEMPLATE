@@ -1,9 +1,8 @@
-
----
 - hosts: web
   roles:
-    - react-app
+    - react
 
 - hosts: db
   roles:
-    - nestjs-app
+    - mariadb
+    - nestjs
