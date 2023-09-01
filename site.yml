@@ -1,0 +1,9 @@
+
+---
+- hosts: web
+  roles:
+    - react-app
+
+- hosts: db
+  roles:
+    - nestjs-app

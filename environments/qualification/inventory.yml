@@ -1,0 +1,49 @@
+
+---
+all:
+  children:
+    app1:
+      hosts:
+        app1_server_1_qualification:
+        app1_server_2_qualification:
+        app1_server_3_qualification:
+        app1_server_4_qualification:
+        app1_server_5_qualification:
+        app1_server_6_qualification:
+    app2:
+      hosts:
+        app2_server_1_qualification:
+        app2_server_2_qualification:
+        app2_server_3_qualification:
+        app2_server_4_qualification:
+        app2_server_5_qualification:
+        app2_server_6_qualification:
+    databases:
+      hosts:
+        db_server_1_qualification:
+        db_server_2_qualification:
+      vars:
+        mariadb_install: true
+    monitoring:
+      hosts:
+        monitoring_server_qualification:
+    frontend:
+      hosts:
+        frontend_server_1_qualification:
+        frontend_server_2_qualification:
+      vars:
+        react_install: true
+    backend:
+      hosts:
+        backend_server_1_qualification:
+        backend_server_2_qualification:
+      vars:
+        nestjs_install: true
+    load_balancer:
+      hosts:
+        lb_server_qualification:
+      vars:
+        nginx_install: true
+        ssl_enable: true
+        http_to_https_redirect: true
+        

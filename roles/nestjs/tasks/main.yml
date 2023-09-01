@@ -1,0 +1,11 @@
+
+---
+- name: Install nestjs
+  command: echo "Installing nestjs"
+  
+- name: Configure nestjs
+  command: echo "Configuring nestjs"
+        
+---
+- name: Echo Installing NestJS
+  command: echo "Installing NestJS"

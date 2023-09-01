@@ -1,0 +1,8 @@
+
+---
+- name: Update database
+  command: /usr/bin/update-database
+    
+---
+- name: Echo Setting up databases
+  command: echo "Setting up databases"

@@ -1,0 +1,27 @@
+
+---
+- name: Update APT package cache
+  apt:
+    update_cache: yes
+
+- name: Install Node.js and npm
+  apt:
+    name:
+      - nodejs
+      - npm
+    state: present
+
+- name: Install react
+  npm:
+    name: react
+    global: yes
+
+- name: Create a new React app
+  command:
+    cmd: npx create-react-app my-app
+    chdir: /home/ec2-user
+
+- name: Start React app
+  command:
+    cmd: npm start
+    chdir: /home/ec2-user/my-app

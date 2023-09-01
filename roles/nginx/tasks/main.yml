@@ -1,0 +1,38 @@
+
+---
+# Install NGINX
+- name: Install NGINX
+  apt:
+    name: nginx
+    state: present
+
+# Configure NGINX for load balancing
+- name: Configure NGINX for load balancing
+  template:
+    src: load_balancer.conf.j2
+    dest: /etc/nginx/sites-available/load_balancer.conf
+
+- name: Enable the load balancer configuration
+  command: ln -s /etc/nginx/sites-available/load_balancer.conf /etc/nginx/sites-enabled
+
+# Enable SSL
+- name: Generate Self-signed SSL certificate
+  command: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt -subj "/CN=localhost"
+
+# Redirect HTTP to HTTPS
+- name: Redirect HTTP to HTTPS
+  lineinfile:
+    path: /etc/nginx/sites-available/default
+    regexp: '^\s*return 301 https://\$host\$request_uri;'
+    line: '        return 301 https://$host$request_uri;'
+    insertafter: '^\s*location / {'
+
+# Reload NGINX to apply changes
+- name: Reload NGINX
+  service:
+    name: nginx
+    state: reloaded
+    
+---
+- name: Echo Installing NGINX
+  command: echo "Installing NGINX"

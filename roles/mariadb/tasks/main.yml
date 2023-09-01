@@ -1,0 +1,36 @@
+
+---
+- name: Update APT package cache
+  apt:
+    update_cache: yes
+
+- name: Install MariaDB server
+  apt:
+    name: mariadb-server
+    state: present
+
+- name: Start MariaDB service
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: Set root password for MariaDB
+  expect:
+    command: mysql_secure_installation
+    responses:
+      'Enter current password for root (enter for none):': ''
+      'Switch to unix_socket authentication [Y/n]': 'n'
+      'Change the root password? [Y/n]': 'y'
+      'New password:': 'new_root_password'
+      'Re-enter new password:': 'new_root_password'
+      'Remove anonymous users? [Y/n]': 'y'
+      'Disallow root login remotely? [Y/n]': 'y'
+      'Remove test database and access to it? [Y/n]': 'y'
+      'Reload privilege tables now? [Y/n]': 'y'
+
+- name: Ensure MariaDB service is restarted
+  service:
+    name: mariadb
+    state: restarted
+    enabled: yes
